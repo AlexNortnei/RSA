@@ -30,7 +30,7 @@ setlocale(LC_ALL, "Russian");
 	t2 = t1;
 	cout << "Зашифрованная цифра(E)-" << t1;
 	cout << endl;
-	d = 1;
+	d = 10;
 	while ((d * e) % f != 0)
 	{
 		if ((d * e) % f == 0)
