@@ -24,11 +24,28 @@ setlocale(LC_ALL, "Russian");
 	}
 	cout << "Введите цифру, которую зашифрует(P)- ";
 	cin >> t1;
-	cout << e << endl;
 	cout << "Открытый ключ-{"<< e <<','<< n <<'}' << endl;
 	t1 = pow(t1, e);
 	t1 = t1 % n;
 	t2 = t1;
 	cout << "Зашифрованная цифра(E)-" << t1;
 	cout << endl;
-  }
+	d = 1;
+	while ((d * e) % f != 0)
+	{
+		if ((d * e) % f == 0)
+		{
+			break;
+		}
+		else
+		{
+			d++;
+		}
+	}
+	d = d + 1;
+	cout << "Закрытый ключ-{" << d << ',' << n << '}' << endl;
+	t2 = pow(t1, d);
+	t2 = t2 % n;
+	cout << "Расшифрованная цифра(P)-" << t2;
+}
+  
