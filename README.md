@@ -4,48 +4,60 @@
 #include <math.h>
 #include <time.h>
 using namespace std;
+/*int EVK(int a, int b)//Алгоритм Евклида
+{
+	int c;
+	while (b)
+	{
+		c = a % b;
+		a = b;
+		b = c;
+	}
+	return abs(a);
+}*/
+
 
 int main()
 {
-setlocale(LC_ALL, "Russian");
-	int p, q, e, d, f, n, t1, t2;
-	cout << "Введите 2 простых числа" << endl;
+	setlocale(LC_ALL, "Russian");
+	int p, q, n, f, e, d,P;
+	unsigned long long T;
+	cout << "Введите два простых числа" << endl;
 	cin >> p >> q;
+	cout << "Введите сообщение (число), желаемое зашифровать и расшифровать." << endl;
+	cin >> T;
 	n = p * q;
 	f = (p - 1)*(q - 1);
-	e = f - 1;
-	for (int i = 2; i < f; i++)
+	e = 1;
+	int v = 0;;
+	while (v != 1)
 	{
-		if ((f % i == 0) && (e % i == 0))
+		if ((f % 2) == 1)
 		{
-			e--;
-			i = 1;
+			e = 2;
+			v = 1;
 		}
+		if ((f % 2) == 0)
+		{
+			e = 3;
+			v = 1;
+		} 
+		//e--;
+		//v = EVK(e, f);
 	}
-	cout << "Введите цифру, которую зашифрует(P)- ";
-	cin >> t1;
-	cout << "Открытый ключ-{"<< e <<','<< n <<'}' << endl;
-	t1 = pow(t1, e);
-	t1 = t1 % n;
-	t2 = t1;
-	cout << "Зашифрованная цифра(E)-" << t1;
-	cout << endl;
-	d = 10;
-	while ((d * e) % f != 0)
+	T = pow(T, e);
+	T = T % n;
+	cout << "Зашифрованное сообщение " << T << endl;
+	d = 1;	
+	while (((d*e) % f) != 1)
 	{
-		if ((d * e) % f == 0)
-		{
-			break;
-		}
-		else
-		{
-			d++;
-		}
+		d++;
 	}
-	d = d + 1;
-	cout << "Закрытый ключ-{" << d << ',' << n << '}' << endl;
-	t2 = pow(t1, d);
-	t2 = t2 % n;
-	cout << "Расшифрованная цифра(P)-" << t2;
+	T = pow(T, d);
+	T = T % n;
+	cout << "Расшифрованное сообщение " << T << endl;
+	cout << "Открытый ключ - {" << e << ',' << n << '}' << endl;
+	cout << "Закрытый ключ - {" << d << ',' << n << '}';
+	
 }
   
