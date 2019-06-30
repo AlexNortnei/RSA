@@ -42,8 +42,6 @@ int main()
 			e = 3;
 			v = 1;
 		} 
-		//e--;
-		//v = EVK(e, f);
 	}
 	T = pow(T, e);
 	T = T % n;
